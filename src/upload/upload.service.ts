@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { Storage } from '@google-cloud/storage';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ProfilePicture } from './entities/profilepicture.entrity';
+import { ProfilePicture } from './entities/profilepicture.entity';
 import { Repository } from 'typeorm';
 import { User } from '../user/entities/user.entity';
 import { AuthenticationService } from '../authentication/authentication.service';

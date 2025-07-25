@@ -7,7 +7,7 @@ import { AmadiousResorce } from './resorce/amadious.resorce';
 import { AirportsModule } from '../airports/airports.module';
 import { Agent } from '../agent/entities/agent.entity';
 import { User } from '../user/entities/user.entity';
-import { BookingIdEntity, SaveBooking } from '../booking/entity/bookingId.entiry';
+import { BookingIdEntity, SaveBooking } from '../booking/entity/bookingId.entity';
 import { AuthenticationModule } from '../authentication/authentication.module';
 
 @Module({

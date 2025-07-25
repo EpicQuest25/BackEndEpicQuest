@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SaveBooking } from './entity/bookingId.entiry';
+import { SaveBooking } from './entity/bookingId.entity';
 import { Repository } from 'typeorm';
 import { User } from '../user/entities/user.entity';
 import { AuthenticationService } from '../authentication/authentication.service';

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Agent } from '../../agent/entities/agent.entity';
 import { AirportsService } from '../../airports/airports.service';
 import { AuthenticationService } from '../../authentication/authentication.service';
-import { BookingIdEntity, SaveBooking } from '../../booking/entity/bookingId.entiry';
+import { BookingIdEntity, SaveBooking } from '../../booking/entity/bookingId.entity';
 import { User } from '../../user/entities/user.entity';
 import { Repository } from 'typeorm';
 

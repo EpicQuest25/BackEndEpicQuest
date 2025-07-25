@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, OneToMany } from 'typeorm';
 import { Wallet } from './wallet.entity';
-import { SaveBooking } from '../../booking/entity/bookingId.entiry';
-import { ProfilePicture } from '../../upload/entities/profilepicture.entrity';
+import { SaveBooking } from '../../booking/entity/bookingId.entity';
+import { ProfilePicture } from '../../upload/entities/profilepicture.entity';
 
 @Entity('users')
 export class User {

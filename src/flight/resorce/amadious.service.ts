@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { AmadiousResorce } from './amadious.resorce';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BookingIdEntity, SaveBooking } from '../../booking/entity/bookingId.entiry';
+import { BookingIdEntity, SaveBooking } from '../../booking/entity/bookingId.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
