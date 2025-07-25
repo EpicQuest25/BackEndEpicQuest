@@ -5,7 +5,10 @@ import { UserController } from './user.controller';
 import { User } from './entities/user.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [
+    // Make TypeORM repository optional
+    ...(process.env.EPICQUEST_URL ? [TypeOrmModule.forFeature([User])] : []),
+  ],
   controllers: [UserController],
   providers: [UserService],
   exports: [UserService],
