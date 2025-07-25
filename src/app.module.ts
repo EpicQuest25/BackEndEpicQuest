@@ -10,17 +10,20 @@ import { UserModule } from './user/user.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // Make TypeORM connection optional by checking for environment variables
-    ...(process.env.EPICQUEST_URL ? [
+    // Use PostgreSQL with Render's environment variables
+    ...(process.env.PGHOST ? [
       TypeOrmModule.forRoot({
-        type: 'mysql',
-        host: process.env.EPICQUEST_URL,
-        port: parseInt(process.env.DB_PORT) || 3306,
-        username: process.env.EPICQUEST_DB_USERNAME,
-        password: process.env.EPICQUEST_DB_PASSWORD,
-        database: process.env.EPICQUEST_DB_NAME,
+        type: 'postgres',
+        host: process.env.PGHOST,
+        port: parseInt(process.env.PGPORT) || 5432,
+        username: process.env.PGUSER,
+        password: process.env.PGPASSWORD,
+        database: process.env.PGDATABASE,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: false,
+        synchronize: true, // Set to true for development to auto-create tables
+        ssl: {
+          rejectUnauthorized: false, // Required for Render PostgreSQL
+        },
       }),
     ] : []),
     JwtModule.register({
