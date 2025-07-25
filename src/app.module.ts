@@ -7,6 +7,17 @@ import * as dotenv from 'dotenv';
 // Import modules that exist in src
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UserModule } from './user/user.module';
+import { PaymentGatewayModule } from './payment-gateway/payment-gateway.module';
+import { AdminModule } from './admin/admin.module';
+import { AirportsModule } from './airports/airports.module';
+import { BookingModule } from './booking/booking.module';
+import { CurrencyModule } from './currency/currency.module';
+import { FlightModule } from './flight/flight.module';
+import { HotelModule } from './hotel/hotel.module';
+import { NotificationModule } from './notification/notification.module';
+import { SupplierModule } from './supplier/supplier.module';
+import { TourPackageModule } from './tour-package/tour-package.module';
+import { UploadModule } from './upload/upload.module';
 
 // Note: The other modules exist in the compiled dist directory but not in src
 // We'll need to recreate these modules or copy them from the original project
@@ -39,6 +50,17 @@ import { UserModule } from './user/user.module';
     // Include modules that exist in src
     AuthenticationModule,
     UserModule,
+    PaymentGatewayModule,
+    AdminModule,
+    AirportsModule,
+    BookingModule,
+    CurrencyModule,
+    FlightModule,
+    HotelModule,
+    NotificationModule,
+    SupplierModule,
+    TourPackageModule,
+    UploadModule,
     
     // To restore all modules, we would need to:
     // 1. Copy the module files from the original project to this project
@@ -46,20 +68,21 @@ import { UserModule } from './user/user.module';
     // 3. Push the changes to GitHub and redeploy
     
     // The missing modules are:
-    // - PaymentGatewayModule
+    // - PaymentGatewayModule (now restored)
+    // - AdminModule (now restored)
+    // - AirportsModule (now restored)
+    // - BookingModule (now restored)
+    // - CurrencyModule (now restored)
     // - AdminModule
-    // - SupplierModule
+    // - SupplierModule (now restored)
     // - AgentModule
-    // - NotificationModule
+    // - NotificationModule (now restored)
     // - CurrencyModule
-    // - HotelModule
-    // - FlightModule
-    // - UploadModule
-    // - TourpackageModule
+    // - HotelModule (now restored)
+    // - FlightModule (now restored)
     // - AirportsModule
     // - BookingModule
     // - TransectionModule
-    // - TourPackageModule
   ],
   controllers: [],
   providers: [],

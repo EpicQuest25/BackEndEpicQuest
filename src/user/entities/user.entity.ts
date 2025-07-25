@@ -1,4 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, OneToMany } from 'typeorm';
+import { Wallet } from './wallet.entity';
+import { SaveBooking } from '../../booking/entity/bookingId.entiry';
+import { ProfilePicture } from '../../upload/entities/profilepicture.entrity';
 
 @Entity('users')
 export class User {
@@ -34,4 +37,13 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => Wallet, wallet => wallet.user, { cascade: true })
+  wallet: Wallet;
+
+  @OneToMany(() => SaveBooking, booking => booking.user)
+  bookingSave: SaveBooking[];
+
+  @OneToOne(() => ProfilePicture, profilePicture => profilePicture.user)
+  profilePicture: ProfilePicture;
 }
