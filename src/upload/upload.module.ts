@@ -7,6 +7,7 @@ import { AuthenticationModule } from '../authentication/authentication.module';
 import { User } from '../user/entities/user.entity';
 import { Agent } from '../agent/entities/agent.entity';
 import { Supplier } from '../supplier/entities/supplier.entity';
+import { UserJwtGuard } from '../authentication/user.jwt.guard';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { Supplier } from '../supplier/entities/supplier.entity';
     AuthenticationModule,
   ],
   controllers: [UploadController],
-  providers: [UploadService],
+  providers: [UploadService, UserJwtGuard],
 })
 export class UploadModule {}
