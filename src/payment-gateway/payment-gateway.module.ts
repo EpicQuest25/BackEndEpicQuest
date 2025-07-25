@@ -5,13 +5,14 @@ import { PaymentGatewayService } from './payment-gateway.service';
 import { Transection } from '../transection/entities/transection.entity';
 import { User } from '../user/entities/user.entity';
 import { Agent } from '../agent/entities/agent.entity';
+import { AdyenService } from './payment-gatewayList/adyenService';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Transection, User, Agent]),
   ],
   controllers: [PaymentGatewayController],
-  providers: [PaymentGatewayService],
-  exports: [PaymentGatewayService],
+  providers: [PaymentGatewayService, AdyenService],
+  exports: [PaymentGatewayService, AdyenService],
 })
 export class PaymentGatewayModule {}
