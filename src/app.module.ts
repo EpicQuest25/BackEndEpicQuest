@@ -18,6 +18,7 @@ import { NotificationModule } from './notification/notification.module';
 import { SupplierModule } from './supplier/supplier.module';
 import { TourPackageModule } from './tour-package/tour-package.module';
 import { UploadModule } from './upload/upload.module';
+import { AgentModule } from './agent/agent.module';
 
 // Note: The other modules exist in the compiled dist directory but not in src
 // We'll need to recreate these modules or copy them from the original project
@@ -61,6 +62,7 @@ import { UploadModule } from './upload/upload.module';
     SupplierModule,
     TourPackageModule,
     UploadModule,
+    AgentModule,
     
     // To restore all modules, we would need to:
     // 1. Copy the module files from the original project to this project
@@ -75,7 +77,7 @@ import { UploadModule } from './upload/upload.module';
     // - CurrencyModule (now restored)
     // - AdminModule
     // - SupplierModule (now restored)
-    // - AgentModule
+    // - AgentModule (now restored)
     // - NotificationModule (now restored)
     // - CurrencyModule
     // - HotelModule (now restored)
