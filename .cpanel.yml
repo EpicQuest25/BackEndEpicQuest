@@ -1,0 +1,7 @@
+deployment:
+  tasks:
+    - source /opt/cpanel/ea-nodejs20/bin/enable
+    - cd ~/public_html/api.epicquest.com.ph
+    - npm install --legacy-peer-deps
+    - npm run build
+    - touch tmp/restart.txt
