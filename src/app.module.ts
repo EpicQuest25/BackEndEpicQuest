@@ -30,24 +30,20 @@ import { HealthModule } from './health/health.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // Use PostgreSQL with Render's environment variables
-    ...(process.env.PGHOST ? [
-      TypeOrmModule.forRoot({
-        type: 'postgres',
-        host: process.env.PGHOST,
-        port: parseInt(process.env.PGPORT) || 5432,
-        username: process.env.PGUSER,
-        password: process.env.PGPASSWORD,
-        database: process.env.PGDATABASE,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
-        migrationsRun: true, // Automatically run migrations on application start
-        synchronize: false, // Set to false when using migrations
-        ssl: {
-          rejectUnauthorized: false, // Required for Render PostgreSQL
-        },
-      }),
-    ] : []),
+    // Use MySQL with environment variables
+    TypeOrmModule.forRoot({
+      type: 'mariadb',
+      host: 'p3plzcpnl506977.prod.phx3.secureserver.net', // Remote server hostname
+      port: parseInt(process.env.DB_PORT) || 3306,
+      username: 'epicquest_world',
+      password: 'epicquest_world',
+      database: 'epicquest_world',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+      migrationsRun: false, // Temporarily disable migrations
+      synchronize: true, // Temporarily enable synchronize to create tables
+      charset: 'utf8mb4', // Support for full UTF-8 character set including emojis
+    }),
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'default_secret_key_for_development',
       signOptions: { expiresIn: process.env.JWT_TIME + 's' || '86400s' },

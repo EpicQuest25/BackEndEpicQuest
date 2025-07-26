@@ -28,28 +28,29 @@ services:
         sync: false
       - key: ADYEN_MERCHANT_ACCOUNT
         sync: false
-      - key: PGHOST
+      - key: EPICQUEST_URL
         fromDatabase:
-          name: epicquest-db
+          name: epicquest-mysql-db
           property: host
-      - key: PGPORT
+      - key: DB_PORT
         fromDatabase:
-          name: epicquest-db
+          name: epicquest-mysql-db
           property: port
-      - key: PGUSER
+      - key: EPICQUEST_DB_USERNAME
         fromDatabase:
-          name: epicquest-db
+          name: epicquest-mysql-db
           property: user
-      - key: PGPASSWORD
+      - key: EPICQUEST_DB_PASSWORD
         fromDatabase:
-          name: epicquest-db
+          name: epicquest-mysql-db
           property: password
-      - key: PGDATABASE
+      - key: EPICQUEST_DB_NAME
         fromDatabase:
-          name: epicquest-db
+          name: epicquest-mysql-db
           property: database
 
 databases:
-  - name: epicquest-db
+  - name: epicquest-mysql-db
+    type: mysql
     plan: starter
     ipAllowList: []

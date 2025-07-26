@@ -7,8 +7,8 @@ import { User } from './entities/user.entity';
 
 @Module({
   imports: [
-    // Make TypeORM repository optional
-    ...(process.env.PGHOST ? [TypeOrmModule.forFeature([User])] : []),
+    // Always import TypeORM repository for User entity
+    TypeOrmModule.forFeature([User]),
     // Import JwtModule for UserJwtGuard
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'default_secret_key_for_development',
