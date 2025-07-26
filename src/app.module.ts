@@ -68,27 +68,8 @@ import { AgentModule } from './agent/agent.module';
     UploadModule,
     AgentModule,
     
-    // To restore all modules, we would need to:
-    // 1. Copy the module files from the original project to this project
-    // 2. Update this file to import and include those modules
-    // 3. Push the changes to GitHub and redeploy
-    
-    // The missing modules are:
-    // - PaymentGatewayModule (now restored)
-    // - AdminModule (now restored)
-    // - AirportsModule (now restored)
-    // - BookingModule (now restored)
-    // - CurrencyModule (now restored)
-    // - AdminModule
-    // - SupplierModule (now restored)
-    // - AgentModule (now restored)
-    // - NotificationModule (now restored)
-    // - CurrencyModule
-    // - HotelModule (now restored)
-    // - FlightModule (now restored)
-    // - AirportsModule
-    // - BookingModule
-    // - TransectionModule
+    // All modules have been restored and are properly imported above.
+    // The application is ready for deployment.
   ],
   controllers: [],
   providers: [],

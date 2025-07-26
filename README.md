@@ -1,73 +1,148 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# EpicQuest Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A NestJS backend for the EpicQuest travel booking platform, providing APIs for hotel and flight booking, payment processing, and user management.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- **User Management**: Registration, authentication, and profile management
+- **Hotel Booking**: Search, view details, and book hotels via Hotelbeds API
+- **Flight Booking**: Search, view details, and book flights via Amadeus API
+- **Payment Processing**: Secure payment processing via Adyen
+- **Admin Dashboard**: Manage users, bookings, and system settings
+- **Agent Portal**: For travel agents to manage bookings and clients
+- **Supplier Management**: Manage hotel and flight suppliers
+- **Notification System**: Email notifications for bookings and account activities
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tech Stack
+
+- **Framework**: [NestJS](https://nestjs.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Database**: PostgreSQL
+- **ORM**: [TypeORM](https://typeorm.io/)
+- **Authentication**: JWT
+- **API Documentation**: Swagger
+- **Payment Gateway**: Adyen
+- **Email Service**: Nodemailer
+- **Cloud Storage**: Google Cloud Storage
+
+## Project Structure
+
+```
+src/
+├── admin/                  # Admin module
+├── agent/                  # Agent module
+├── airports/               # Airports data and services
+├── authentication/         # Authentication module
+├── booking/                # Booking module
+├── currency/               # Currency module
+├── flight/                 # Flight module
+├── hotel/                  # Hotel module
+├── migrations/             # Database migrations
+├── notification/           # Notification module
+├── payment-gateway/        # Payment gateway integration
+├── supplier/               # Supplier module
+├── tour-package/           # Tour package module
+├── transaction/            # Transaction module
+├── upload/                 # File upload module
+├── user/                   # User module
+├── app.module.ts           # Main application module
+└── main.ts                 # Application entry point
+```
 
 ## Installation
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/epicquest-backend.git
+   cd epicquest-backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory with the following variables:
+   ```
+   # JWT
+   JWT_SECRET=your_jwt_secret
+   JWT_TIME=86400
+   
+   # Database
+   PGHOST=localhost
+   PGPORT=5432
+   PGUSER=postgres
+   PGPASSWORD=your_password
+   PGDATABASE=epicquest
+   
+   # Adyen Payment Gateway
+   ADYEN_API_URL=https://checkout-test.adyen.com
+   ADYEN_API_KEY=your_adyen_api_key
+   ADYEN_MERCHANT_ACCOUNT=your_merchant_account
+   
+   # Hotelbeds API
+   HOTELBED_BASE_URL=https://api.test.hotelbeds.com
+   HOTELBED_API_KEY=your_hotelbeds_api_key
+   HOTELBED_SECRET=your_hotelbeds_secret
+   
+   # Amadeus API
+   AMADUES_BASE_URL=https://test.api.amadeus.com
+   AMADUES_API_KEY=your_amadeus_api_key
+   AMADUES_SECRET=your_amadeus_secret
+   ```
+
+## Running the App
+
 ```bash
-$ npm install
+# Development
+npm run start
+
+# Watch mode
+npm run start:dev
+
+# Production mode
+npm run start:prod
 ```
 
-## Running the app
+## API Documentation
 
-```bash
-# development
-$ npm run start
+Once the application is running, you can access the Swagger API documentation at:
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+http://localhost:3000/api
 ```
 
-## Test
+## Deployment
+
+The application is configured for deployment to [Render](https://render.com/) using the `render.yaml` file. To deploy:
+
+1. Push your code to GitHub
+2. Connect your GitHub repository to Render
+3. Render will automatically deploy the application based on the configuration in `render.yaml`
+
+## Database Migrations
 
 ```bash
-# unit tests
-$ npm run test
+# Generate a migration
+npm run typeorm:generate -- -n MigrationName
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Run migrations
+npm run typeorm:run
 ```
 
-## Support
+## Testing
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# Unit tests
+npm run test
 
-## Stay in touch
+# E2E tests
+npm run test:e2e
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Test coverage
+npm run test:cov
+```
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License - see the LICENSE file for details.
