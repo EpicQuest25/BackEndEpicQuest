@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Agent } from '../agent/entities/agent.entity';
-import { Transection } from '../transection/entities/transection.entity';
+import { Transaction } from '../transaction/entities/transaction.entity';
 import { User } from '../user/entities/user.entity';
 import { Repository } from 'typeorm';
 
@@ -21,8 +21,8 @@ interface WebhookData {
 @Injectable()
 export class PaymentGatewayService {
   constructor(
-    @InjectRepository(Transection)
-    private readonly transectionRepo: Repository<Transection>,
+    @InjectRepository(Transaction)
+    private readonly transactionRepo: Repository<Transaction>,
     @InjectRepository(Agent)
     private readonly agentRepo: Repository<Agent>,
     @InjectRepository(User)
@@ -66,8 +66,8 @@ export class PaymentGatewayService {
       .padStart(3, '0');
     const randomId = 'EPQT' + datePart + randomPart;
 
-    const transaction = new Transection();
-    transaction.transectionId = randomId;
+    const transaction = new Transaction();
+    transaction.transactionId = randomId;
     transaction.gatewayData = data;
     transaction.paymentRiskType = data?.eventCode;
     transaction.gatewayReferance = pspReference;
@@ -79,6 +79,6 @@ export class PaymentGatewayService {
     transaction.agent = agent || null;
     transaction.user = user || null;
 
-    await this.transectionRepo.save(transaction);
+    await this.transactionRepo.save(transaction);
   }
 }

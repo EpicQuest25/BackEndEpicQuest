@@ -38,7 +38,9 @@ import { AgentModule } from './agent/agent.module';
         password: process.env.PGPASSWORD,
         database: process.env.PGDATABASE,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true, // Set to true for development to auto-create tables
+        migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+        migrationsRun: true, // Automatically run migrations on application start
+        synchronize: false, // Set to false when using migrations
         ssl: {
           rejectUnauthorized: false, // Required for Render PostgreSQL
         },
