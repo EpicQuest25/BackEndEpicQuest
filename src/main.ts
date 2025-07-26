@@ -10,11 +10,6 @@ async function bootstrap() {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
 
-  // Add health check endpoint for Render
-  app.get('/health', (req, res) => {
-    res.status(200).send('OK');
-  });
-
   // Set up Swagger documentation
   const config = new DocumentBuilder()
     .setTitle('EpicQuest API')

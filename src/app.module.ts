@@ -20,6 +20,7 @@ import { SupplierModule } from './supplier/supplier.module';
 import { TourPackageModule } from './tour-package/tour-package.module';
 import { UploadModule } from './upload/upload.module';
 import { AgentModule } from './agent/agent.module';
+import { HealthModule } from './health/health.module';
 
 // Note: The other modules exist in the compiled dist directory but not in src
 // We'll need to recreate these modules or copy them from the original project
@@ -67,6 +68,7 @@ import { AgentModule } from './agent/agent.module';
     TourPackageModule,
     UploadModule,
     AgentModule,
+    HealthModule, // Add the health module
     
     // All modules have been restored and are properly imported above.
     // The application is ready for deployment.
