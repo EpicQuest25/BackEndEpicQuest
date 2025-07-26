@@ -10,6 +10,11 @@ async function bootstrap() {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
 
+  // Add health check endpoint for Render
+  app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
+
   // Set up Swagger documentation
   const config = new DocumentBuilder()
     .setTitle('EpicQuest API')
@@ -34,5 +39,6 @@ async function bootstrap() {
   await app.listen(port);
   console.log(`Application is running on: ${await app.getUrl()}`);
   console.log(`Swagger documentation is available at: ${await app.getUrl()}/api`);
+  console.log(`Health check endpoint is available at: ${await app.getUrl()}/health`);
 }
 bootstrap();

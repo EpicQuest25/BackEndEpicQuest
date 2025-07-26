@@ -1,0 +1,55 @@
+services:
+  # Backend API service
+  - type: web
+    name: epicquest-backend
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_TIME
+        value: 86400
+      - key: AMADEUS_API_KEY
+        sync: false
+      - key: AMADEUS_API_SECRET
+        sync: false
+      - key: HOTELBEDS_API_KEY
+        sync: false
+      - key: HOTELBEDS_API_SECRET
+        sync: false
+      - key: ADYEN_API_KEY
+        sync: false
+      - key: ADYEN_MERCHANT_ACCOUNT
+        sync: false
+      - key: PGHOST
+        fromDatabase:
+          name: epicquest-db
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: epicquest-db
+          property: port
+      - key: PGUSER
+        fromDatabase:
+          name: epicquest-db
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: epicquest-db
+          property: password
+      - key: PGDATABASE
+        fromDatabase:
+          name: epicquest-db
+          property: database
+
+databases:
+  - name: epicquest-db
+    plan: starter
+    ipAllowList: []
