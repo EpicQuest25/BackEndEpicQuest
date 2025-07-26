@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule } from '@nestjs/jwt';
 import { Admin } from '../admin/entities/admin.entity';
 import { Introduction } from './entities/Introduction.model';
 import { TourPlan } from './entities/tourPlan.Model';
@@ -23,6 +24,10 @@ import { TourPackageService } from './tour-package.service';
       tourBooking,
       User,
     ]),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET || 'default_secret_key_for_development',
+      signOptions: { expiresIn: process.env.JWT_TIME + 's' || '86400s' },
+    }),
   ],
   controllers: [TourPackageController],
   providers: [TourPackageService],
