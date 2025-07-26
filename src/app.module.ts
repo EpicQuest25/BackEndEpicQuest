@@ -8,6 +8,7 @@ import * as dotenv from 'dotenv';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UserModule } from './user/user.module';
 import { PaymentGatewayModule } from './payment-gateway/payment-gateway.module';
+import { TransactionModule } from './transaction/transaction.module';
 import { AdminModule } from './admin/admin.module';
 import { AirportsModule } from './airports/airports.module';
 import { BookingModule } from './booking/booking.module';
@@ -54,6 +55,7 @@ import { AgentModule } from './agent/agent.module';
     AuthenticationModule,
     UserModule,
     PaymentGatewayModule,
+    TransactionModule,
     AdminModule,
     AirportsModule,
     BookingModule,
